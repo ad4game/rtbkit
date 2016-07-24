@@ -25,7 +25,8 @@
     // metrics. If missing, then a barebone internal event logger will be
     // created which can be useful to write tests.
     // "carbon-uri": ["carbon1.kittens.org:2003", "carbonA.kittens.org:2003"],
-    
+    "carbon-uri": ["0.0.0.0:2003"], 
+   
     // Interval, in seconds, at which statistics are sent to graphite.
     // Must be set to the same value as the smallest retention period
     // in graphite's storage-schema.conf. Defaults to 1.

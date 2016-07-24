@@ -7,5 +7,21 @@
         "auctionVerb": "POST",
         "auctionResource": "/auctions",
         "performNameLookup": false
+    },
+    {
+        "exchangeType": "openrtb",
+        "listenPort": 12338,
+        "bindHost": "0.0.0.0",
+        "auctionVerb": "POST",
+        "auctionResource": "/auctions",
+        "performNameLookup": false
+    },
+    {
+        "exchangeType": "smaato",
+        "listenPort": 12337,
+        "bindHost": "0.0.0.0",
+        "auctionVerb": "POST",
+        "auctionResource": "/smaato_bid",
+        "performNameLookup": false
     }
 ]

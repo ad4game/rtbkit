@@ -14,7 +14,11 @@
 #include <boost/any.hpp>
 #include <boost/lexical_cast.hpp>
 #include "jml/utils/file_functions.h"
- 
+
+#include "crypto++/blowfish.h"
+#include "crypto++/modes.h"
+#include "crypto++/filters.h"
+
 using namespace std;
 using namespace Datacratic;
 
@@ -53,9 +57,25 @@ SmaatoExchangeConnector(const std::string & name,
 }
 
 void
-SmaatoExchangeConnector::
-init()
-{
+SmaatoExchangeConnector::init() {
+
+#define GENERATE_MACRO_FOR(field) \
+        [](const Json::Value& value, CreativeInfo& data) { \
+            Datacratic::jsonDecode(value, field); \
+            return true; \
+        }
+
+	/* General fields */
+	configuration_.addField(
+		"adm",
+		GENERATE_MACRO_FOR(data.adm)
+	).optional().snippet();
+	configuration_.addField(
+		"nurl",
+		GENERATE_MACRO_FOR(data.nurl)
+	).optional().snippet();
+
+#undef GENERATE_MACRO_FOR
 }
  
 std::shared_ptr<BidRequest>
